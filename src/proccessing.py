@@ -14,3 +14,18 @@ def filter_by_state(input_list: list[dict], _state_: str = 'EXECUTED') -> list[d
             result_list.append(curr_dict)
 
     return result_list
+
+def sort_by_date(input_list: list[dict], _order: int = 0) -> list[dict]:
+    """ сортирует по дате. по умолчанию - убывание, если _order = 1 то возрастание """
+
+    if len(input_list) == 0:
+        return []
+
+    order = _order
+
+    if order == 0:
+        sorted_list = sorted(input_list, key=lambda x:x['date'], reverse=True)
+    else:
+        sorted_list = sorted(input_list, key=lambda x: x['date'], reverse=False)
+
+    return sorted_list
