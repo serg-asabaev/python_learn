@@ -1,4 +1,6 @@
-def filter_by_state(input_list: list[dict[str: str]], state: str = 'EXECUTED') -> list[dict[str: str]]:
+
+
+def filter_by_state(input_list: list[dict], state: str = 'EXECUTED') -> list[dict]:
     """  возвращает новый список словарей, содержащий только те словари, у которых ключ state
             соответствует указанному значению
     """
@@ -14,7 +16,8 @@ def filter_by_state(input_list: list[dict[str: str]], state: str = 'EXECUTED') -
 
     return result_list
 
-def sort_by_date(input_list:  list[dict[str: str]], order: bool = True) -> list[dict[str: str]]:
+
+def sort_by_date(input_list: list[dict], order: bool = True) -> list[dict]:
     """ сортирует по дате. по умолчанию - убывание, если order = False то возрастание """
 
     if len(input_list) == 0:

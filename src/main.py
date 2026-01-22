@@ -9,7 +9,6 @@ import widget
 # import requests
 
 
-
 def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
     """Функция которая складывает два числа"""
 
