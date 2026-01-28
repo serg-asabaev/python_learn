@@ -2,9 +2,9 @@
 # import os
 from typing import Union
 
-import masks
-import proccessing
-import widget
+from src import masks
+from src import proccessing
+from src import widget
 
 # import requests
 
@@ -13,6 +13,17 @@ def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
     """Функция которая складывает два числа"""
 
     return a + b
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        raise ZeroDivisionError('Деление на ноль невозможно')
+    return x / y
 
 
 # print(add(5, 8))
