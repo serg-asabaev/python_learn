@@ -1,6 +1,6 @@
 import pytest
 
-from src import masks, widget
+from src import widget
 
 
 @pytest.mark.parametrize(
@@ -43,7 +43,7 @@ def test_mask_account_card_account_empty():
         ("Счет 73654108430138548256", "Счет **8256"),
         ("Счет 73654108430135245256", "Счет **5256"),
         ("Счет 73654108430135251664", "Счет **1664"),
-    ],
+    ]
 )
 def test_mask_account_card_account(acc_num, acc_mask):
     assert widget.mask_account_card(acc_num) == acc_mask
