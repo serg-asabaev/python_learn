@@ -8,6 +8,9 @@ def filter_by_state(input_list: list[dict], state: str = 'EXECUTED') -> list[dic
     if len(input_list) == 0:
         return []
 
+    if state == '':
+        state = 'EXPECTED'
+
     result_list = []
 
     for curr_dict in input_list:
