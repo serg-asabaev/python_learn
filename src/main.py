@@ -8,6 +8,7 @@ import pytest
 
 from src import masks, proccessing, widget
 from src.generators import card_number_generator, filter_by_currency
+from src.decorators import log, write_to_file
 
 # import requests
 
@@ -17,15 +18,15 @@ def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
 
     return a + b
 
-
+@log(write_to_file)
 def subtract(x, y):
     return x - y
 
-
+@log(write_to_file)
 def multiply(x, y):
     return x * y
 
-
+@log(write_to_file)
 def divide(x, y):
     if y == 0:
         raise ZeroDivisionError("Деление на ноль невозможно")
@@ -141,3 +142,6 @@ if __name__ == "__main__":
     # print(next(card_number))
     # print(next(card_number))
     # print(next(card_number))
+
+    multiply(8,9)
+    divide(5,0)
