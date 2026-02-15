@@ -39,15 +39,20 @@ def test_log_success(capsys, function, func_name, a, b):
 
 @pytest.mark.parametrize('function, func_name, err_type, a, b', [
     (divide, 'divide', 'ZeroDivisionError', 5, 0),
-
+    (divide, 'divide', 'TypeError', '50', 5),
+    (divide, 'divide', 'TypeError', 50, '5'),
+    (divide, 'divide', 'TypeError', '50', '5'),
 ])
 def test_log_error(capsys, function, func_name, err_type, a, b):
-    function(a, b)
-    captured = capsys.readouterr()
 
-    assert captured.out == f'Начало работы функции {func_name}\n'\
-                            f'{func_name} error: {err_type}. Inputs: ({a}, {b}), ' + '{}\n'\
-                            f'Конец работы функции {func_name}\n'
+    try:
+        function(a, b)
+    except ZeroDivisionError or TypeError or Exception:
+        captured = capsys.readouterr()
+
+        assert captured.out == f'Начало работы функции {func_name}\n'\
+                                f'{func_name} error: {err_type}. Inputs: ({a}, {b}), ' + '{}\n'\
+                                f'Конец работы функции {func_name}\n'
 
 
 @pytest.mark.parametrize(
