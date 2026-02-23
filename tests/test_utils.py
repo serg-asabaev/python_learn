@@ -6,7 +6,7 @@ from src.external_api import get_rouble_amount
 
 
 def test_get_operations_list(operations):
-    assert get_operations_list('../data/operations.json') == operations
+    assert get_operations_list('data/operations.json') == operations
 
 
 def test_get_operations_list_error():

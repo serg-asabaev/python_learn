@@ -1,6 +1,7 @@
 import json
 
 from mypy.types_utils import UnionType
+
 from src.external_api import get_rouble_amount
 
 
