@@ -10,7 +10,7 @@ import pytest
 from src import masks, proccessing, widget
 from src.decorators import log
 from src.generators import card_number_generator, filter_by_currency
-from src.Utils import get_operations_list
+from src.utils import get_operations_list
 
 # import requests
 
