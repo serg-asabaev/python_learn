@@ -1,11 +1,10 @@
 from unittest.mock import patch, Mock
 import requests
 import pytest
-from src.external_api import get_rouble_amount
+
 
 from src.utils import get_operations_list, get_transaction_sum
 from src.external_api import get_rouble_amount
-
 
 def test_get_operations_list(operations):
     assert get_operations_list('../data/operations.json') == operations
@@ -19,21 +18,17 @@ def test_get_operations_list_error():
 def test_get_operations_list_empty():
     assert get_operations_list() == []
 
-
-# @patch('external_api.get_rouble_amount')
+@patch('requests.get')
 def test_get_transaction_sum(mock_get, operation):
-
+    # with patch('requests.request') as mock_request:
     currency = operation["operationAmount"]["currency"]["code"]
     amount = operation["operationAmount"]["amount"]
 
-    mock_get = Mock(return_value=4346675.927978)
-    get_rouble_amount = mock_get
-    print(get_transaction_sum(operation))
-    print(get_transaction_sum(operation))
-    print(get_transaction_sum(operation))
+    mock_get.return_value.status_code = 200
+    mock_get.return_value.json.return_value = 4326679.835635
 
     params = f'?to=RUB&from={currency}&amount={amount}'
-    assert get_transaction_sum(operation) == mock_get
+    assert get_rouble_amount(amount, currency) == 4326679.835635
     mock_get.assert_called_once_with(f'https://api.apilayer.com/currency_data/convert{params}')
 
 

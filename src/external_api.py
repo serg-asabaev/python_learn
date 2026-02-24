@@ -8,15 +8,18 @@ def get_rouble_amount(amount: float, currency: str) -> float:
 
     url = f"https://api.apilayer.com/currency_data/convert?to=RUB&from={currency}&amount={amount}"
 
-    payload = {}
-    headers = {
-    }
-
     load_dotenv()
     api_key = os.getenv('API_KEY')
-    headers['apikey'] = api_key
 
-    response = requests.request("GET", url, headers=headers, data=payload)
-    result = json.loads(response.text)['result']
+    payload = {}
+    headers = {
+        'apikey': api_key
+    }
 
-    return result
+    response = requests.get(url, headers=headers)
+    # response = requests.request("GET", url, headers=headers, data=payload)
+    # result = json.loads(response.text)['result']
+
+    return response.json()['result']
+
+print(get_rouble_amount(56516.63, "USD"))

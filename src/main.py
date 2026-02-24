@@ -1,11 +1,12 @@
 # import math
 # import os
 from typing import Union
+import requests
 
 from src import masks, proccessing, widget
 from src.decorators import log
 from src.generators import card_number_generator, filter_by_currency
-from src.utils import get_operations_list
+from src.utils import get_operations_list, get_transaction_sum
 
 # import requests
 
@@ -46,5 +47,22 @@ def number_dup(x: Union[int, float]) -> list:
 
 if __name__ == "__main__":
 
-    print(get_operations_list('data/operations.json'))
-    print(get_operations_list('operations.json'))
+    # print(get_operations_list('data/operations.json'))
+    # print(get_operations_list('operations.json'))
+    operation =  {
+        "id": 490100847,
+        "state": "EXECUTED",
+        "date": "2018-12-22T02:02:49.564873",
+        "operationAmount": {
+          "amount": "56516.63",
+          "currency": {
+            "name": "USD",
+            "code": "USD"
+          }
+        },
+        "description": "Перевод с карты на карту",
+        "from": "Visa Gold 8326537236216459",
+        "to": "MasterCard 6783917276771847"
+      }
+
+    print(get_transaction_sum(operation))
