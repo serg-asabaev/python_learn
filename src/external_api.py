@@ -20,6 +20,6 @@ def get_rouble_amount(amount: float, currency: str) -> float:
     # response = requests.request("GET", url, headers=headers, data=payload)
     # result = json.loads(response.text)['result']
 
-    return response.json()['result']
+    return response.json()["result"]
 
 print(get_rouble_amount(56516.63, "USD"))

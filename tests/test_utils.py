@@ -1,4 +1,4 @@
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, ANY
 import requests
 import pytest
 
@@ -11,7 +11,7 @@ def test_get_operations_list(operations):
 
 
 def test_get_operations_list_error():
-    assert get_operations_list('/src/operations.json') == []
+    assert get_operations_list('../data/operations.json') == []
     assert get_operations_list('') == []
 
 
@@ -20,16 +20,18 @@ def test_get_operations_list_empty():
 
 @patch('requests.get')
 def test_get_transaction_sum(mock_get, operation):
-    # with patch('requests.request') as mock_request:
     currency = operation["operationAmount"]["currency"]["code"]
     amount = operation["operationAmount"]["amount"]
 
     mock_get.return_value.status_code = 200
-    mock_get.return_value.json.return_value = 4326679.835635
+    mock_get.return_value.json.return_value = {"result": 4326679.835635}
 
     params = f'?to=RUB&from={currency}&amount={amount}'
     assert get_rouble_amount(amount, currency) == 4326679.835635
-    mock_get.assert_called_once_with(f'https://api.apilayer.com/currency_data/convert{params}')
+    mock_get.assert_called_once_with(
+        f"https://api.apilayer.com/currency_data/convert?to=RUB&from={currency}&amount={amount}",
+        headers={'apikey': ANY}
+    )
 
 
 def test_get_transaction_sum_error(wrong_operation):

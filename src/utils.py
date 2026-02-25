@@ -29,7 +29,7 @@ def get_operations_list(file: str = '') -> list[dict]:
     return json_obj
 
 
-def get_transaction_sum(transaction: dict = {}) -> UnionType(int, float):
+def get_transaction_sum(transaction: dict = {}) ->  float:
     """ Получение суммы в рублях из входящего словаря транзакции """
     if len(transaction) == 0 or "operationAmount" not in transaction \
             or "amount" not in transaction["operationAmount"] \
@@ -44,22 +44,3 @@ def get_transaction_sum(transaction: dict = {}) -> UnionType(int, float):
         return amount
     else:
         return get_rouble_amount(amount, currency)
-
-
-# operation = {
-#     "id": 490100847,
-#     "state": "EXECUTED",
-#     "date": "2018-12-22T02:02:49.564873",
-#     "operationAmount": {
-#       "amount": "56516.63",
-#       "currency": {
-#         "name": "USD",
-#         "code": "USD"
-#       }
-#     },
-#     "description": "Перевод с карты на карту",
-#     "from": "Visa Gold 8326537236216459",
-#     "to": "MasterCard 6783917276771847"
-#   }
-#
-# print(get_transaction_sum(operation))
