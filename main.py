@@ -65,4 +65,6 @@ if __name__ == "__main__":
         "to": "MasterCard 6783917276771847"
       }
 
-    print(get_transaction_sum(operation))
+    card_mask = masks.get_mask_card_number(operation['from'])
+    account_mask = masks.get_mask_account('Счет 64686473678894779589')
+    print(card_mask, account_mask)

@@ -1,18 +1,27 @@
 import json
-
+import logging
 from mypy.types_utils import UnionType
 
 from src.external_api import get_rouble_amount
 from tests.conftest import operation
 
 
+logger = logging.getLogger('utils_logger')
+file_handler = logging.FileHandler('../logs/utils.log', encoding='utf-8', mode='w')
+file_formatter = logging.Formatter('%(asctime)s %(name)s %(levelname)s %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.INFO)
+
 def get_operations_list(file: str = '') -> list[dict]:
     """ Получение json-обьекта из указанного файла """
+    logger.info('Начало маскировки карты')
 
     if len(file) == 0:
         return []
 
     try:
+        logger.info('Начало маскировки карты')
         with open(file, 'r', encoding='utf-8') as f:
             json_obj = json.load(f)
     except FileNotFoundError:
@@ -26,6 +35,7 @@ def get_operations_list(file: str = '') -> list[dict]:
     except ValueError:
         return []
 
+    logger.info('Начало маскировки карты')
     return json_obj
 
 
