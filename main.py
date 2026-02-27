@@ -68,3 +68,11 @@ if __name__ == "__main__":
     card_mask = masks.get_mask_card_number(operation['from'])
     account_mask = masks.get_mask_account('Счет 64686473678894779589')
     print(card_mask, account_mask)
+
+    operations = get_operations_list('../data/operations.json')
+
+    print(operations)
+
+    rouble_amount = get_transaction_sum(operation)
+
+    print(rouble_amount)
