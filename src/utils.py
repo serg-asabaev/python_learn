@@ -39,7 +39,7 @@ def get_operations_list(file: str = '') -> list[dict]:
         logger.error('не найден ключ в файле')
         return []
     except ValueError:
-        logger.warning('ошибка значения файла')
+        logger.error('ошибка значения файла')
         return []
 
     logger.info('Завершение работы функции get_operations_list')
@@ -65,7 +65,7 @@ def get_transaction_sum(transaction: dict = {}) ->  float:
         logger.info('Завершение работы функции get_transaction_sum сумма в рублях')
         return amount
     else:
-        logger.info('Завершение работы функции get_transaction_sum сумма в валюте. Вывод суммы в рублях')
+        logger.info('сумма в валюте получение суммы в рублях')
 
         try:
             result = get_rouble_amount(amount, currency)
@@ -74,5 +74,5 @@ def get_transaction_sum(transaction: dict = {}) ->  float:
             logger.error('ошибка получения данных')
             return 0
 
-        logger.info('')
+        logger.info('Завершение работы функции get_transaction_sum ')
         return result
