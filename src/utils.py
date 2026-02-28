@@ -43,4 +43,7 @@ def get_transaction_sum(transaction: dict = {}) ->  float:
     if currency == "RUB":
         return amount
     else:
-        return get_rouble_amount(amount, currency)
+        try:
+            return get_rouble_amount(amount, currency)
+        except Exception as e:
+            return 0

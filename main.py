@@ -7,6 +7,9 @@ from src import masks, proccessing, widget
 from src.decorators import log
 from src.generators import card_number_generator, filter_by_currency
 from src.utils import get_operations_list, get_transaction_sum
+from src.csv_excel_reader import read_csv, read_excel
+from tests.conftest import transactions
+
 
 # import requests
 
@@ -65,4 +68,12 @@ if __name__ == "__main__":
         "to": "MasterCard 6783917276771847"
       }
 
-    print(get_transaction_sum(operation))
+    transactions = read_csv('../data/transactions.csv')
+
+    # for tran in transactions:
+    #     print(tran['from'])
+    #
+
+    excel_tran = read_excel('../data/transactions_excel.xlsx')
+
+    print(excel_tran)
