@@ -3,12 +3,16 @@ from unittest.mock import patch
 import pytest
 
 def test_read_csv(transactions_csv_exc):
-    assert read_csv('../data/transactions.csv')[0] == transactions_csv_exc
+    csv_info_first = read_csv('../data/transactions.csv')[0]
+    assert csv_info_first == transactions_csv_exc
 
 
 def test_read_csv_error():
-    pass
+    assert read_csv('../data/transactions1.csv') == []
+    assert read_csv('data/transactions.csv') == []
+    assert read_csv('../logs/transactions.csv') == []
 
 
 def test_read_csv_empty():
-    pass
+    assert read_csv() == []
+    assert read_csv('') == []

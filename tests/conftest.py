@@ -15,7 +15,7 @@ def dict_list_canceled():
 @pytest.fixture
 def transactions_csv_exc():
     sample_dict = {
-      'id': 650703,
+      'id': '650703',
       'state': 'EXECUTED',
       'date': '2023-09-05T11:30:32Z',
       'amount': '16210',
