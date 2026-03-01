@@ -4,15 +4,16 @@ from typing import Callable, Union
 
 def log(filename: str = "") -> Callable:
     """
-        Декоратор логирующий успешные запуски функции и ошибки.
-        Принимаетна вход адрес файла лога, а если он не задан ваводит текст лога в консоль
-        """
+    Декоратор логирующий успешные запуски функции и ошибки.
+    Принимаетна вход адрес файла лога, а если он не задан ваводит текст лога в консоль
+    """
 
     def wrapper(func: Callable) -> Callable:
 
         @wraps(func)
-        def inner(*args: Union[str, int, float, None], **kwargs: Union[str, int, float, None]) \
-                -> Union[str, int, float, None]:
+        def inner(
+            *args: Union[str, int, float, None], **kwargs: Union[str, int, float, None]
+        ) -> Union[str, int, float, None]:
             log_text = "Начало работы функции " + func.__name__ + "\n"
             res = None
 
