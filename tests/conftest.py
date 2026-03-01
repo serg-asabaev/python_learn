@@ -1,5 +1,5 @@
 import pytest
-
+import pandas as pd
 
 @pytest.fixture
 def dict_list_exec():
@@ -10,6 +10,22 @@ def dict_list_exec():
 def dict_list_canceled():
     return [{'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
             {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
+
+
+@pytest.fixture
+def transactions_csv_exc():
+    sample_dict = {
+      'id': 650703,
+      'state': 'EXECUTED',
+      'date': '2023-09-05T11:30:32Z',
+      'amount': '16210',
+      'currency_name': 'Sol',
+      'currency_code': 'PEN',
+      'from': 'Счет 58803664561298323391',
+      'to': 'Счет 39745660563456619397',
+      'description': 'Перевод организации'
+    }
+    return sample_dict
 
 @pytest.fixture
 def transactions():
