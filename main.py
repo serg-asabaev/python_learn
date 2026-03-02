@@ -71,7 +71,7 @@ if __name__ == "__main__":
         "to": "MasterCard 6783917276771847"
       }
 
-    transactions = read_csv('../data/transactions.csv')
+    transactions = read_csv('data/transactions.csv')
 
     print(transactions[0])
     # for tran in transactions:
