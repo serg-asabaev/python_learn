@@ -10,9 +10,9 @@ def test_get_operations_list(operations):
     assert get_operations_list('../data/operations.json') == operations
 
 
-# def test_get_operations_list_error():
-#     assert get_operations_list('../data/operations.json') == []
-#     assert get_operations_list('') == []
+def test_get_operations_list_error():
+    assert get_operations_list('data/operations.json') == []
+    assert get_operations_list('') == []
 
 
 def test_get_operations_list_empty():
@@ -26,7 +26,6 @@ def test_get_operations_list_empty():
 #     mock_get.return_value.status_code = 200
 #     mock_get.return_value.json.return_value = {"result": 4326679.835635}
 #
-#     params = f'?to=RUB&from={currency}&amount={amount}'
 #     assert get_rouble_amount(amount, currency) == 4326679.835635
 #     mock_get.assert_called_once_with(
 #         f"https://api.apilayer.com/currency_data/convert?to=RUB&from={currency}&amount={amount}",
