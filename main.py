@@ -7,6 +7,7 @@ from src import masks
 from src import proccessing
 from src import widget
 from src.decorators import log
+from src.utils import get_operations_list, get_transaction_sum
 # from src.generators import card_number_generator, filter_by_currency
 # from src.utils import get_operations_list, get_transaction_sum
 from src.csv_excel_reader import read_csv, read_excel
@@ -71,13 +72,14 @@ if __name__ == "__main__":
         "to": "MasterCard 6783917276771847"
       }
 
-    transactions = read_csv('data/transactions.csv')
-
-    print(transactions[0])
+    # transactions = read_csv('data/transactions.csv')
+    # print(transactions)
     # for tran in transactions:
     #     print(tran['from'])
     #
 
-    # excel_tran = read_excel('../data/transactions_excel.xlsx')
+    excel_tran = read_excel('data/transactions_excel.xlsx')
     #
-    # print(excel_tran)
+    print(excel_tran)
+    # operttions_list = get_operations_list('data/operations.json')
+    # print(operttions_list)

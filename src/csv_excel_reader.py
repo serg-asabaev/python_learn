@@ -1,4 +1,5 @@
 import csv
+
 import pandas as pd
 
 
@@ -23,10 +24,16 @@ def read_csv(file_path: str = '') -> list[dict]:
     return result
 
 
-def read_excel(file_path: str) -> list[dict]:
+def read_excel(file_path: str = '') -> list[dict]:
     """Чтение Excel - файла"""
 
-    df = pd.read_excel(file_path, index_col=0)
-    result = df.to_dict(orient="records")
+    if len(file_path) == 0:
+        return []
+
+    try:
+        df = pd.read_excel(file_path, index_col=0)
+        result = df.to_dict(orient="records")
+    except Exception:
+        return []
 
     return result

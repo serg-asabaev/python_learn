@@ -13,12 +13,26 @@ def dict_list_canceled():
 
 
 @pytest.fixture
-def transactions_csv_exc():
+def transactions_csv():
     sample_dict = {
       'id': '650703',
       'state': 'EXECUTED',
       'date': '2023-09-05T11:30:32Z',
       'amount': '16210',
+      'currency_name': 'Sol',
+      'currency_code': 'PEN',
+      'from': 'Счет 58803664561298323391',
+      'to': 'Счет 39745660563456619397',
+      'description': 'Перевод организации'
+    }
+    return sample_dict
+
+@pytest.fixture
+def transactions_exc():
+    sample_dict = {
+      'state': 'EXECUTED',
+      'date': '2023-09-05T11:30:32Z',
+      'amount': 16210,
       'currency_name': 'Sol',
       'currency_code': 'PEN',
       'from': 'Счет 58803664561298323391',

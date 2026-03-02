@@ -1,5 +1,6 @@
-import os
 import json
+import os
+
 import requests
 from dotenv import load_dotenv
 
@@ -18,7 +19,7 @@ def get_rouble_amount(amount: float, currency: str) -> float:
     try:
         response = requests.get(url, headers=headers)
         result = json.loads(response.text)['result']
-    except Exception as e:
+    except Exception:
         result = 0
 
     return result
