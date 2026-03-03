@@ -2,9 +2,10 @@ import json
 import logging
 
 from src.external_api import get_rouble_amount
+from tests.conftest import operation
 
 logger = logging.getLogger("utils_logger")
-file_handler = logging.FileHandler("logs/utils.log", encoding="utf-8", mode="w")
+file_handler = logging.FileHandler("../logs/utils.log", encoding="utf-8", mode="w")
 file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -68,12 +69,12 @@ def get_transaction_sum(transaction: dict = {}) -> float:
     else:
         logger.info("сумма в валюте получение суммы в рублях")
 
-        try:
-            result = get_rouble_amount(amount, currency)
-            logger.info("данные получены")
-        except Exception:
-            logger.error("ошибка получения данных")
-            return 0
+        # try:
+        result = get_rouble_amount(amount, currency)
+        logger.info("данные получены")
+        # except Exception:
+        #     logger.error("ошибка получения данных")
+        #     return Exception
 
         logger.info("Завершение работы функции get_transaction_sum ")
         return result

@@ -78,8 +78,9 @@ if __name__ == "__main__":
     #     print(tran['from'])
     #
 
-    excel_tran = read_excel('data/transactions_excel.xlsx')
+    excel_tran = read_excel('../data/transactions_excel.xlsx')
     #
     print(excel_tran)
     # operttions_list = get_operations_list('data/operations.json')
     # print(operttions_list)
+    print(operation)

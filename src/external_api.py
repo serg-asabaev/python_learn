@@ -15,11 +15,6 @@ def get_rouble_amount(amount: float, currency: str) -> float:
 
     # payload = {}
     headers = {"apikey": api_key}
+    response = requests.get(url, headers=headers)
 
-    try:
-        response = requests.get(url, headers=headers)
-        result = json.loads(response.text)['result']
-    except Exception:
-        result = 0
-
-    return result
+    return response.json()['result']
