@@ -1,4 +1,4 @@
-from black import Generator
+from typing import Generator
 
 
 def filter_by_currency(input_list: list, currency: str) -> Generator:
