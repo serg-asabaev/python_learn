@@ -1,8 +1,16 @@
 import logging
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Создаем путь до файла логов относительно текущей директории
+rel_file_path = os.path.join(current_dir, "../logs/masks.log")
+abs_file_path = os.path.abspath(rel_file_path)
+
 
 logger = logging.getLogger("masks_logger")
-file_handler = logging.FileHandler("../logs/masks.log", encoding="utf-8", mode="w")
-file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
+file_handler = logging.FileHandler(abs_file_path, encoding="utf-8", mode="w")
+file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(funcName)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)

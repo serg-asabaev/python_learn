@@ -1,11 +1,19 @@
 import json
 import logging
+import os
 
 from src.external_api import get_rouble_amount
 from tests.conftest import operation
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+# Создаем путь до файла логов относительно текущей директории
+rel_file_path = os.path.join(current_dir, "../logs/utils.log")
+abs_file_path = os.path.abspath(rel_file_path)
+
 logger = logging.getLogger("utils_logger")
-file_handler = logging.FileHandler("../logs/utils.log", encoding="utf-8", mode="w")
+file_handler = logging.FileHandler(abs_file_path, encoding="utf-8", mode="w")
 file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

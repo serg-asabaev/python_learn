@@ -5,12 +5,12 @@ import pytest
 @patch('src.csv_excel_reader.read_csv')
 def test_read_csv(mock_read_csv, transactions_csv):
     mock_read_csv.return_value = transactions_csv
-    assert read_csv('../data/transactions.csv')[0] == mock_read_csv.return_value
+    assert read_csv('data/transactions.csv')[0] == mock_read_csv.return_value
 
 
 def test_read_csv_error():
     assert read_csv('../data/transactions1.csv') == []
-    assert read_csv('data/transactions.csv') == []
+    assert read_csv('/transactions.csv') == []
     assert read_csv('../logs/transactions.csv') == []
 
 
@@ -21,7 +21,7 @@ def test_read_csv_empty():
 @patch('src.csv_excel_reader.read_excel')
 def test_read_excel(mock_read_excel, transactions_exc):
     mock_read_excel.return_value = transactions_exc
-    assert read_excel('../data/transactions_excel.xlsx')[0] == mock_read_excel.return_value
+    assert read_excel('data/transactions_excel.xlsx')[0] == mock_read_excel.return_value
 
 def test_read_excel_error():
     assert read_excel('../data/transactions_excel1.xlsx') == []
