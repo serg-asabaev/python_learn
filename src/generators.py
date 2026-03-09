@@ -7,9 +7,16 @@ def filter_by_currency(input_list: list, currency: str) -> Generator:
         yield []
 
     for curr_dict in input_list:
-        if curr_dict["operationAmount"]["currency"]["name"] == currency:
-            res = curr_dict
-            yield res
+        if curr_dict == {}:
+            continue
+        try:
+            if curr_dict["operationAmount"]["currency"]["code"] == currency:
+                res = curr_dict
+                yield res
+        except KeyError:
+            if curr_dict["currency_code"] == currency:
+                res = curr_dict
+                yield res
 
 
 def transaction_descriptions(input_list: list) -> Generator:
