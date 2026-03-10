@@ -1,6 +1,8 @@
 import re
 from collections import Counter
 
+from tests.conftest import transactions
+
 
 def process_bank_search(data:list[dict], search:str)->list[dict]:
     """ Поиск по подстроке в описании, возвращает список найденных операций """
