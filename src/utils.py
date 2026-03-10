@@ -3,10 +3,8 @@ import logging
 import os
 
 from src.external_api import get_rouble_amount
-from tests.conftest import operation
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
 
 # Создаем путь до файла логов относительно текущей директории
 rel_file_path = os.path.join(current_dir, "../logs/utils.log")

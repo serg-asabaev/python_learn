@@ -1,10 +1,8 @@
 import re
 from collections import Counter
 
-from tests.conftest import transactions
 
-
-def process_bank_search(data:list[dict], search:str)->list[dict]:
+def process_bank_search(data: list[dict], search: str) -> list[dict]:
     """ Поиск по подстроке в описании, возвращает список найденных операций """
 
     if len(data) == 0:
@@ -22,7 +20,8 @@ def process_bank_search(data:list[dict], search:str)->list[dict]:
 
     return result
 
-def process_bank_operations(data:list[dict], categories:list)->dict:
+
+def process_bank_operations(data: list[dict], categories: list) -> dict:
     """
         Подсчет количества операций по категориям поданным на вход, возвращает словарь,
         где ключ это категория, а значение - количество операций с данной категорией
